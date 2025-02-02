@@ -1,0 +1,13 @@
+@page "/events"
+@inject EventService EventService
+
+<h3>Event List</h3>
+
+<div class="event-list">
+    @foreach (var eventItem in EventService.GetEvents())
+    {
+        <EventCard EventName="@eventItem.Name" EventDate="@eventItem.Date" EventLocation="@eventItem.Location" />
+    }
+
+    <a class="register-link" href="/eventregistration">Add an Event</a>
+</div>

@@ -1,0 +1,45 @@
+@page "/attendanceregistration/{eventName}"
+@inject EventService EventService
+@code {
+    [Parameter]
+    public required string EventName { get; set; }
+
+    private Attendee newAttendee = new Attendee();
+    private bool isRegistered = false;
+
+    private void HandleValidSubmit()
+    {
+        EventService.AddAttendee(EventName, newAttendee);
+        isRegistered = true;
+        newAttendee = new Attendee(); // Reset the form
+    }
+}
+
+<h3>Attendance Registration for @EventName</h3>
+
+@if (isRegistered)
+{
+    <p>Successfully registered!</p>
+    <a href="/events">Return to Events List</a>
+}
+else
+{
+    <EditForm Model="newAttendee" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div>
+            <label for="userName">Name:</label>
+            <InputText id="userName" @bind-Value="newAttendee.Name" />
+            <ValidationMessage For="@(() => newAttendee.Name)" />
+        </div>
+
+        <div>
+            <label for="userEmail">Email:</label>
+            <InputText id="userEmail" @bind-Value="newAttendee.Email" />
+            <ValidationMessage For="@(() => newAttendee.Email)" />
+        </div>
+
+        <button type="submit">Register</button>
+    </EditForm>
+}

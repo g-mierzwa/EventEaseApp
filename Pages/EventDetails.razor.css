@@ -1,0 +1,20 @@
+.event-details {
+    padding: 1rem;
+    border: 1px solid #d6d5d5;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.event-details h3 {
+    margin-bottom: 1rem;
+}
+
+.event-details p {
+    margin: 0.5rem 0;
+}
+
+.event-details p strong {
+    font-weight: bold;
+}
