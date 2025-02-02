@@ -1,2 +1,2 @@
 # EventEaseApp
-Blazor for Front-End Development Project
+Microsoft Blazor for Front-End Development Project
